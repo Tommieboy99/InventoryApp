@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Inventory App</title>
+</head>
+<body>
+    <div id="app">
+        <%- include('partials/header') %>
+        <main class="main">
+            <section class="dashboardOverview">
+                <div class="overviewCard">
+                    <h2 class="cardTitle">Total items</h2>
+                    <p class="cardInfo"> <%= totalItems %> </p>
+                </div>
+                <div class="overviewCard">
+                    <h2 class="cardTitle">Total categories</h2>
+                    <p class="cardInfo"> <%= totalCategories %> </p>
+                </div>
+                <div class="overviewCard">
+                    <h2 class="cardTitle">Out of stock</h2>
+                    <p class="cardInfo"> <%= totalOutOfStock %> </p>
+                </div>
+                <div class="overviewCard">
+                    <h2 class="cardTitle">Total value</h2>
+                    <p class="cardInfo"> €<%= totalStockValue %> </p>
+                </div>
+            </section>
+            <section class="inventorySection">
+                <div class="inventoryHeader">
+                    <h2 class="headerTitle"> Items </h2>
+                    <form action="/" method="get" class="categoryFilter">
+                        <label for="category" class="visuallyHidden">Filter on category</label>
+                        <select class="filterSelect" name="category" onchange="this.form.submit()">
+                            <option value="all" <%= selectedCategory === 'all' ? 'selected' : '' %>>All</option>
+                            <% categories.map((category) => { %>
+                                <option value="<%= category.name %>" <%= selectedCategory === category.name ? 'selected' : '' %>><%= category.name %></option>
+                            <%}) %>
+                        </select>
+                    </form>
+                </div>
+                <div class="itemsContainer">
+                    <% items.map((item) => { %>
+                        <div class="productCard <%= item.stock === 0 ? 'outOfStock' : ''%>">
+                            <div class="productName">
+                                <div class="productNameDiv">
+                                    <p class="productCardText">Name:</p>
+                                    <p class="productCardText"><%= item.name %></p>
+                                </div>
+                                <div class="productActions">
+                                    <a href="/actions/editItem/<%= item.id %>" class="productEdit">Edit</a>
+                                    <a href="/actions/deleteItem/<%= item.id %>" class="productDelete">Delete</a>
+                                </div>
+                            </div> 
+
+                            <div class="productInfo">
+                                <div class="info">
+                                    <p class="productCardText">Category:</p>
+                                    <p class="productCardText"><%= item.category_name || '—' %></p>
+                                </div>
+                                <div class="info <%= item.stock === 0 ? 'outOfStockText' : ''%>">
+                                    <p class="productCardText">Stock:</p>
+                                    <p class="productCardText"><%= item.stock %></p>
+                                </div>
+                                <div class="info">
+                                    <p class="productCardText">Price:</p>
+                                    <p class="productCardText">€<%= item.price %></p>
+                                </div>
+                            </div> 
+                        </div> 
+                    <% }) %>
+                </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+    </div>
+</body>
+</html>
