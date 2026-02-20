@@ -1,0 +1,41 @@
+:root {
+    --background-color: #2A4AA0;
+    --color: #FFFFFF;
+}
+
+.footer {
+    background-color: var(--background-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footerText {
+    color: var(--color);
+    text-align: center;
+}
+
+.footerLink {
+    color: var(--color);
+}
+
+.githubIcon {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+@media (min-width: 500px) {
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: unset;
+        flex-direction: unset;
+    }   
+
+    .footerText {
+        text-align: unset;
+    }
+}
