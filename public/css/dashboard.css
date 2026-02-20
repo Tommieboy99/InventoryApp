@@ -1,0 +1,160 @@
+:root {
+    --main-background-color: #F8FAFC;
+    --dashboard-background-color: #1E3A8A;
+    --dashboard-color: #FFFFFF;
+    --dashboard-border: #FFFFFF;
+    --dashboard-hover-color: #2A4AA0;
+
+    --dashboard-outOfStock-background-color: #DC2626;
+}
+
+.main {
+    background-color: var(--main-background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dashboardOverview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5rem 5rem;
+    gap: 1rem;
+}
+
+.overviewCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dashboard-background-color);
+    color: var(--dashboard-color);
+    box-shadow: 0px 4px 4px rgba(30, 58, 138, 0.4);
+    gap: 0.2rem;
+}
+
+.cardTitle,
+.cardInfo {
+    font-size: 1.2rem;
+}
+
+.inventorySection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inventoryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--dashboard-background-color);
+    padding: 0.5rem;
+}
+
+.headerTitle {
+    font-size: 1.5rem;
+    color: var(--dashboard-color);
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.filterSelect {
+    height: 100%;
+    border: 1px solid var(--dashboard-border);
+    background: none;
+    font-family: inherit;
+    background-color: var(--dashboard-background-color);
+    padding: 0.3rem 0.2rem;
+    width: 5rem;
+    color: var(--dashboard-color);
+    font-size: 1rem;
+}
+
+.filterSelect:hover {
+    background-color: var(--dashboard-hover-color);
+}
+
+.itemsContainer {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.info {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.productCard {
+    padding: 0.5rem;
+    background: var(--dashboard-background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.productName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--dashboard-border);
+    padding: 0.5rem;
+}
+
+.productInfo {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.productNameDiv {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.productActions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.productCardText {
+    color: var(--dashboard-color);
+}
+
+.productEdit,
+.productDelete {
+    color: var(--dashboard-color);
+    text-decoration: none;
+    border-left: 1px solid var(--dashboard-border);
+    border-right: 1px solid var(--dashboard-border);
+    padding: 0.3rem 0rem;
+    width: 4rem;
+    text-align: center;
+}
+
+.productEdit:hover,
+.productDelete:hover {
+    background-color: var(--dashboard-hover-color);
+}
+
+.outOfStock {
+    background-color: var(--dashboard-outOfStock-background-color);
+}
+
+.outOfStockText {
+    border-bottom: 1px solid var(--dashboard-border);
+}
+
+@media (min-width: 768px) {
+
+    .dashboardOverview {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 5rem;
+    }
+}
