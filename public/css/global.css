@@ -1,0 +1,21 @@
+*, 
+*::before, 
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Times New Roman', Times, serif;
+}
+
+#app {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+    width: 100%;
+    gap: 1rem;
+    max-width: 1200px;
+    margin-inline: auto;
+}
