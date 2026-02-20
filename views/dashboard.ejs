@@ -53,8 +53,8 @@
                                     <p class="productCardText"><%= item.name %></p>
                                 </div>
                                 <div class="productActions">
-                                    <a href="/actions/editItem/<%= item.id %>" class="productEdit">Edit</a>
-                                    <a href="/actions/deleteItem/<%= item.id %>" class="productDelete">Delete</a>
+                                    <a href="/actions/editItem/<%= item.id %>" class="productEdit <%= item.stock === 0 ? 'outOfStockHover' : '' %>">Edit</a>
+                                    <a href="/actions/deleteItem/<%= item.id %>" class="productDelete <%= item.stock === 0 ? 'outOfStockHover' : '' %>">Delete</a>
                                 </div>
                             </div> 
 
