@@ -1,13 +1,8 @@
 const { Router } = require("express");
-const { dashboardController, actionsController, addItemController, editItemController, deleteItemController} = require("../controllers/indexController");
+const { dashboardController } = require("../controllers/dashboardController");
 
-const indexRouter = Router();
+const dashboardRouter = Router();
 
-indexRouter.get("/", dashboardController);
+dashboardRouter.get("/", dashboardController);
 
-indexRouter.get("/actions", actionsController);
-indexRouter.get("/actions/addItem", addItemController);
-indexRouter.get("/actions/editItem/:id", editItemController);
-indexRouter.get("/actions/deleteItem/:id", deleteItemController);
-
-module.exports = indexRouter;
+module.exports = dashboardRouter;
