@@ -151,6 +151,10 @@
     border-bottom: 1px solid var(--dashboard-border);
 }
 
+.outOfStockHover:hover {
+    background-color: #EF4444;
+}
+
 @media (min-width: 768px) {
 
     .dashboardOverview {
