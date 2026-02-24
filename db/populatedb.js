@@ -24,14 +24,16 @@ VALUES ('Nothing', 0, 0, 1), ('Test 1', 5000, 10, 2), ('Test 2', 99.99, 400, 2),
 
 `;
 
+const connectionString = process.argv[2];
+
 async function main() {
     console.log("seeding...");
+    console.log(connectionString);
+
     const client = new Client({
-        connectionString: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false,
-        },
+        connectionString,
     });
+    
     await client.connect();
     await client.query(SQL);
     await client.end();
