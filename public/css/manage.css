@@ -1,0 +1,108 @@
+:root {
+    --main-background-color: #F8FAFC;
+    --manage-background-color: #1E3A8A;
+    --manage-color: #FFFFFF;
+    --manage-border: #FFFFFF;
+    --manage-hover-color: #2A4AA0;
+}
+
+.main {
+    background-color: var(--main-background-color);
+}
+
+.manageHeader {
+    background-color: var(--manage-background-color);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.manageInventory {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.filterSelect {
+    border: 1px solid var(--manage-border);
+    background: none;
+    font-family: inherit;
+    background-color: var(--manage-background-color);
+    padding: 0.1rem 0.2rem;
+    width: 5rem;
+    color: var(--manage-color);
+    font-size: 1rem;
+}
+
+.filterSelect:hover {
+    background-color: var(--manage-hover-color);
+}
+
+.headerTitle {
+    color: var(--manage-color);
+}
+
+.forms {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.formContainer {
+    background-color: var(--manage-background-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.formTitle {
+    color: var(--manage-color);
+    font-size: 1.2rem;
+}
+
+.formLabel {
+    color: var(--manage-color);
+}
+
+.formSelect,
+.formInput {
+    background-color: var(--manage-background-color);
+    color: var(--manage-color);
+    border: 1px solid var(--manage-border);
+    font-family: inherit;
+    padding: 0.3rem 0.2rem;
+    font-size: 1rem;
+}
+
+.formBtn {
+    margin-top: 1rem;
+    background: var(--manage-background-color);
+    border: 1px solid var(--manage-border);
+    padding: 0.3rem 0.2rem;
+    width: 5rem;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    color: var(--manage-color);
+}
+
+.formBtn:hover {
+    background-color: var(--manage-hover-color);
+}

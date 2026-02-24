@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/manage.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Music</title>
+</head>
+<body>
+    <div id="app">
+        <%- include('partials/header') %>
+        <main class="main">
+            <section class="manageInventory">
+                <div class="manageHeader">
+                    <h2 class="headerTitle"> Adjust Inventory </h2>
+                    <form action="/manage" method="get" class="modeFilter">
+                        <label for="mode" class="visuallyHidden">Filter on mode</label>
+                        <select class="filterSelect" name="mode" onchange="this.form.submit()">
+                            <option value="create" <%= mode === "create" ? 'selected' : '' %> >Create</option>
+                            <option value="edit" <%= mode === "edit" ? 'selected' : '' %>>Edit</option>
+                            <option value="delete" <%= mode === "delete" ? 'selected' : '' %>>Delete</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="forms">
+                <% if (mode === "create") { %>
+                    <div class="formContainer">
+                        <h2 class="formTitle">Create Item</h2>
+                        <form action="/manage/createItem" method="post" class="form">
+
+                            <label for="name" class="formLabel">Name</label>
+                            <input type="text" name="name" class="formInput">
+
+                            <label for="price" class="formLabel">Price</label>
+                            <input type="number" name="price" class="formInput">
+
+                            <label for="stock" class="formLabel">Stock</label>
+                            <input type="number" name="stock" class="formInput">
+
+                            <label for="category" class="formLabel">Category</label>
+                            <select name="category" class="formSelect">
+                                <% categories.map((category) => { %>
+                                    <option value="<%= category.name %>"><%= category.name %></option>
+                                <% }) %>
+                            </select>
+                            
+                            <button type="submit" class="formBtn">Create</button>
+                        </form>
+                    </div>
+                    <div class="formContainer">
+                        <h2 class="formTitle">Create Category</h2>
+                        <form action="/manage/createCategory" method="post" class="form">
+
+                            <label for="name" class="formLabel">Name</label>
+                            <input type="text" name="name" class="formInput">
+
+                            <button type="submit" class="formBtn">Create</button>
+                        </form>
+                    </div>
+                <% } else if (mode === "edit") { %>
+                    <div class="formContainer">
+                        <h2 class="formTitle">Edit Item</h2>
+                        <form action="/manage/updateItem" method="post" class="form">
+
+                            <label for="name" class="formLabel">Item name</label>
+                            <select name="name" class="formSelect">
+                                <% items.map((item) => { %>
+                                    <option value="<%= item.id %>" <%= itemId === item.id ? 'selected' : '' %>><%= item.name %></option>
+                                <% }) %>
+                            </select>
+
+                            <label for="newName" class="formLabel">New name</label>
+                            <input type="text" name="newName" class="formInput">
+
+                            <label for="newPrice" class="formLabel">New price</label>
+                            <input type="number" name="newPrice" class="formInput">
+
+                            <label for="newStock" class="formLabel">New stock</label>
+                            <input type="number" name="newStock" class="formInput">
+
+                            <label for="newCategory" class="formLabel">New category</label>
+                            <select name="newCategory" class="formSelect">
+                                <option value=""></option>
+                                <% categories.map((category) => { %>
+                                    <option value="<%= category.id %>"> <%= category.name %> </option>
+                                <% }) %>
+                            </select>
+                            
+                            <button type="submit" class="formBtn">Edit</button>
+                        </form>
+                    </div>
+                    <div class="formContainer">
+                        <p class="formTitle">Edit Category</p>
+                        <form action="/manage/updateCategory" method="post" class="form">
+
+                            <label for="name" class="formLabel">Category name</label>
+                            <select name="name" class="formSelect">
+                                <% categories.map((category) => { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% }) %>
+                            </select>
+
+                            <label for="newName" class="formLabel">New name</label>
+                            <input type="text" name="newName" class="formInput">
+
+                            <button type="submit" class="formBtn">Edit</button>
+                        </form>
+                    </div>
+                <% } else if (mode === "delete") { %>
+                    <div class="formContainer">
+                        <h2 class="formTitle">Delete Item</h2>
+                        <form action="/manage/deleteItem" method="post" class="form">
+
+                            <label for="name" class="formLabel">Item name</label>
+                            <select name="name" class="formSelect">
+                                <% items.map((item) => { %>
+                                    <option value="<%= item.id %>" <%= itemId === item.id ? 'selected' : '' %>><%= item.name %></option>
+                                <% }) %>
+                            </select>
+
+                            <button type="submit" class="formBtn">Delete</button>
+                        </form>
+                    </div>
+                    <div class="formContainer">
+                        <h2 class="formTitle">Delete Category</h2>
+                        <form action="/manage/deleteCategory" method="post" class="form">
+                            <label for="name" class="formLabel">Category name</label>
+                            <select name="name" class="formSelect">
+                                <% categories.map((category) => { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% }) %>
+                            </select>
+
+                            <button type="submit" class="formBtn">Delete</button>
+                        </form>
+                    </div>
+                <% } else { %>
+                    <div>
+                        <p>error</p>
+                    </div>
+                <% } %>
+                </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+    </div>
+</body>
+</html>
