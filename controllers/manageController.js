@@ -76,6 +76,14 @@ async function updateCategory (req, res) {
 }
 
 async function deleteItem (req, res) {
+    
+    const password = req.body.password;
+
+    if (password !== process.env.ADMIN_PASSWORD) {
+        console.log('wrong password')
+        return;
+    }
+
     const id = req.body.name;
 
     await db.deleteItem(id);
@@ -83,6 +91,14 @@ async function deleteItem (req, res) {
 }
 
 async function deleteCategory (req, res) {
+    
+    const password = req.body.password;
+
+    if (password !== process.env.ADMIN_PASSWORD) {
+        console.log('wrong password')
+        return;
+    }
+    
     const id = req.body.name;
 
     await db.deleteCategory(id);
