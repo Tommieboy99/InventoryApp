@@ -31,6 +31,13 @@ async function createCategory (req, res) {
 }
 
 async function updateItem (req, res) {
+
+    const password = req.body.password;
+
+    if (password !== process.env.ADMIN_PASSWORD) {
+        return;
+    }
+
     const id = req.body.name;
     const newName = req.body.newName;
     const newPrice = req.body.newPrice;
@@ -68,6 +75,13 @@ async function updateItem (req, res) {
 }
 
 async function updateCategory (req, res) {
+
+    const password = req.body.password;
+
+    if (password !== process.env.ADMIN_PASSWORD) {
+        return;
+    }
+
     const id = req.body.name;
     const newName = req.body.newName;
 
@@ -80,7 +94,6 @@ async function deleteItem (req, res) {
     const password = req.body.password;
 
     if (password !== process.env.ADMIN_PASSWORD) {
-        console.log('wrong password')
         return;
     }
 
@@ -95,7 +108,6 @@ async function deleteCategory (req, res) {
     const password = req.body.password;
 
     if (password !== process.env.ADMIN_PASSWORD) {
-        console.log('wrong password')
         return;
     }
     
