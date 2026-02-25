@@ -47,18 +47,15 @@
                 <div class="itemsContainer">
                     <% items.map((item) => { %>
                         <div class="productCard <%= item.stock === 0 ? 'outOfStock' : ''%>">
-                            <div class="productName">
-                                <div class="productNameDiv">
+                            <div class="productActions">
+                                <a href="/manage/?mode=edit&id=<%= item.id %>" class="productEdit <%= item.stock === 0 ? 'outOfStockHover' : '' %>">Edit</a>
+                                <a href="/manage/?mode=delete&id=<%= item.id %>" class="productDelete <%= item.stock === 0 ? 'outOfStockHover' : '' %>">Delete</a>
+                            </div>
+                            <div class="productInfo">
+                                <div class="info">
                                     <p class="productCardText">Name:</p>
                                     <p class="productCardText"><%= item.name %></p>
                                 </div>
-                                <div class="productActions">
-                                    <a href="/manage/?mode=edit&id=<%= item.id %>" class="productEdit <%= item.stock === 0 ? 'outOfStockHover' : '' %>">Edit</a>
-                                    <a href="/manage/?mode=delete&id=<%= item.id %>" class="productDelete <%= item.stock === 0 ? 'outOfStockHover' : '' %>">Delete</a>
-                                </div>
-                            </div> 
-
-                            <div class="productInfo">
                                 <div class="info">
                                     <p class="productCardText">Category:</p>
                                     <p class="productCardText"><%= item.category_name || '—' %></p>
