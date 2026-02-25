@@ -32,13 +32,13 @@
                         <form action="/manage/createItem" method="post" class="form">
 
                             <label for="name" class="formLabel">Name</label>
-                            <input type="text" name="name" class="formInput">
+                            <input type="text" name="name" class="formInput" required>
 
                             <label for="price" class="formLabel">Price</label>
-                            <input type="number" name="price" class="formInput">
+                            <input type="number" name="price" class="formInput" min="0" required>
 
                             <label for="stock" class="formLabel">Stock</label>
-                            <input type="number" name="stock" class="formInput">
+                            <input type="number" name="stock" class="formInput" min="0" required>
 
                             <label for="category" class="formLabel">Category</label>
                             <select name="category" class="formSelect">
@@ -55,7 +55,7 @@
                         <form action="/manage/createCategory" method="post" class="form">
 
                             <label for="name" class="formLabel">Name</label>
-                            <input type="text" name="name" class="formInput">
+                            <input type="text" name="name" class="formInput" required>
 
                             <button type="submit" class="formBtn">Create</button>
                         </form>
@@ -76,10 +76,10 @@
                             <input type="text" name="newName" class="formInput">
 
                             <label for="newPrice" class="formLabel">New price</label>
-                            <input type="number" name="newPrice" class="formInput">
+                            <input type="number" name="newPrice" class="formInput" min="0">
 
                             <label for="newStock" class="formLabel">New stock</label>
-                            <input type="number" name="newStock" class="formInput">
+                            <input type="number" name="newStock" class="formInput" min="0">
 
                             <label for="newCategory" class="formLabel">New category</label>
                             <select name="newCategory" class="formSelect">
@@ -90,7 +90,7 @@
                             </select>
 
                             <label for="password" class="formLabel">Password</label>
-                            <input type="password" name="password" class="formInput">
+                            <input type="password" name="password" class="formInput" required>
                             
                             <button type="submit" class="formBtn">Edit</button>
                         </form>
@@ -107,10 +107,10 @@
                             </select>
 
                             <label for="newName" class="formLabel">New name</label>
-                            <input type="text" name="newName" class="formInput">
+                            <input type="text" name="newName" class="formInput" required>
 
                             <label for="password" class="formLabel">Password</label>
-                            <input type="password" name="password" class="formInput">
+                            <input type="password" name="password" class="formInput" required>
 
                             <button type="submit" class="formBtn">Edit</button>
                         </form>
@@ -129,7 +129,7 @@
 
 
                             <label for="password" class="formLabel">Password</label>
-                            <input type="password" name="password" class="formInput">
+                            <input type="password" name="password" class="formInput" required>
 
                             <button type="submit" class="formBtn">Delete</button>
                         </form>
@@ -145,7 +145,7 @@
                             </select>
 
                             <label for="password" class="formLabel">Password</label>
-                            <input type="password" name="password" class="formInput">
+                            <input type="password" name="password" class="formInput" required>
 
                             <button type="submit" class="formBtn">Delete</button>
                         </form>
