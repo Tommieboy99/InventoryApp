@@ -1,49 +1,49 @@
 const pool = require('./pool');
 
-async function getItemCount(query) {
-    if (!query) {
+async function getItemCount(category) {
+    if (!category) {
         const { rows } = await pool.query("SELECT COUNT(*) FROM item")
         const [{ count: total }] = rows;
         return total;
     } else {
-        const { rows } = await pool.query("SELECT COUNT(*) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1", [query])
+        const { rows } = await pool.query("SELECT COUNT(*) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1", [category])
         const [{ count: total }] = rows;
         return total;
     }
 }
 
-async function getCategoryCount(query) {
-    if (!query) {
+async function getCategoryCount(category) {
+    if (!category) {
         const { rows } = await pool.query("SELECT COUNT(DISTINCT i.category_id) FROM item i JOIN category c ON i.category_id = c.id ")
         const [{ count: total }] = rows;
         return total;
     } else {
-        const { rows } = await pool.query("SELECT COUNT(i.category_id) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1", [query])
+        const { rows } = await pool.query("SELECT COUNT(DISTINCT i.category_id) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1", [category])
         const [{ count: total }] = rows;
         return total;
     }
 }
 
-async function getItemsOutOfStock(query) {
-    if (!query) {
+async function getItemsOutOfStock(category) {
+    if (!category) {
         const { rows } = await pool.query("SELECT COUNT(stock) FROM item WHERE stock = 0");
         const [{ count: total }] = rows;
         return total;
     } else {
-        const { rows } = await pool.query("SELECT COUNT(stock) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1 AND stock = 0", [query])
+        const { rows } = await pool.query("SELECT COUNT(stock) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1 AND stock = 0", [category])
         const [{ count: total }] = rows;
         return total;
     }
 }
 
-async function getTotalStockValue(query) {
-    if (!query ) {
+async function getTotalStockValue(category) {
+    if (!category ) {
         const { rows } = await pool.query("SELECT SUM(price * stock) FROM item");
         const [{ sum: total }] = rows;
         if (!total) return "0.00";
         return total;
     } else {
-        const { rows } = await pool.query("SELECT SUM(price * stock) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1", [query])
+        const { rows } = await pool.query("SELECT SUM(price * stock) FROM item i JOIN category c ON i.category_id = c.id WHERE c.name ILIKE $1", [category])
         const [{ sum: total }] = rows;
         if (!total) return "0.00";
         return total;
