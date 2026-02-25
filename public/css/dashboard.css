@@ -71,9 +71,14 @@
     font-family: inherit;
     background-color: var(--dashboard-background-color);
     padding: 0.3rem 0.2rem;
-    width: 8rem;
+    width: 100%;
     color: var(--dashboard-color);
     font-size: 1rem;
+}
+
+.categoryFilter {
+    width: 15%;
+    min-width: 100px;
 }
 
 .filterSelect:hover {
@@ -82,8 +87,8 @@
 
 .itemsContainer {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .info {
@@ -96,7 +101,6 @@
     background: var(--dashboard-background-color);
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
 }
 
 .productName {
@@ -109,8 +113,9 @@
 
 .productInfo {
     display: flex;
-    justify-content: space-between;
     padding: 0.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .productNameDiv {
@@ -120,7 +125,9 @@
 
 .productActions {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.3rem;
+    border-bottom: 1px solid white;
+    justify-content: end;
 }
 
 .productCardText {
@@ -133,8 +140,11 @@
     text-decoration: none;
     border-left: 1px solid var(--dashboard-border);
     border-right: 1px solid var(--dashboard-border);
+    border-top: 1px solid var(--dashboard-border);
     padding: 0.3rem 0rem;
-    width: 4rem;
+    width: 25%;
+    min-width: 60px;
+    text-align: center;
     text-align: center;
 }
 
@@ -148,7 +158,7 @@
 }
 
 .outOfStockText {
-    border-bottom: 1px solid var(--dashboard-border);
+    font-weight: bold;
 }
 
 .outOfStockHover:hover {
